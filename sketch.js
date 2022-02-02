@@ -15,19 +15,26 @@ class ControlPoint {
 let p0, p1, p2, p3;
 let t;
 let res = 100;
+let p2_slider;
 
 function setup() {
   createCanvas(400, 400);
   t0 = 0;
   delta = 0.01;
+  
+  p1_slider = createSlider(1, 9, 2, 0.1);
+  p2_slider = createSlider(1, 9, 2, 0.1);
 }
 
 function draw() {
 
   background(0);
+  let p1_pos = p1_slider.value() / 10;
+  let p2_pos = p2_slider.value() / 10;
+  
   p0 = new ControlPoint(100, 0.5*height, color(255, 255, 255));
-  p1 = new ControlPoint(150, 0.2*height, color(255, 0, 0));
-  p2 = new ControlPoint(250, 0.2*height, color(0, 255, 0));
+  p1 = new ControlPoint(150, p1_pos*height, color(255, 0, 0));
+  p2 = new ControlPoint(250, p2_pos*height, color(0, 255, 0));
   p3 = new ControlPoint(300, 0.5*height, color(0, 100, 255));
   
   p0.show();
